@@ -6,6 +6,6 @@ class Point
 public:
     Point(int a, int b);
     int x, y;
-    std::string printCoordinates();
+    std::string getPoint();
 };
 #endif

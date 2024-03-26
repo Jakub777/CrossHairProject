@@ -3,9 +3,9 @@
 #include <string>
 
 Triangle::Triangle(Orientation o, HeightDirection h, float a, float b) :
-    VertexA(0,0),
-    VertexB(0,0),
-    VertexC(0,0),
+    VertexA(1,1),
+    VertexB(2,2),
+    VertexC(3,3),
     orientation(o),
     height_direction(h),
     base(a),
@@ -15,7 +15,9 @@ float Triangle::calculate_area() const {
     return 0,5 * base * height;
 }
 
-std::string Triangle::writeSVGformula() {
-    //<polygon points="0,100 50,25 50,75 100,0" />
-    return "dupa" ;
+std::string Triangle::getTag() {
+    return ("<polygon points=\""  +
+    VertexA.getPoint() + " "+
+    VertexB.getPoint() + " "+
+    VertexC.getPoint() + "\"/>");
 }

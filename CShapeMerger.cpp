@@ -1,5 +1,6 @@
 #include "CShapeMerger.hpp"
 #include "CTriangle.hpp"
+
 ShapeMerger::ShapeMerger() {};
 
 void ShapeMerger::calculateFirstVertex(Triangle& triangle, Circle& circle)

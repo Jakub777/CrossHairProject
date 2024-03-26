@@ -32,6 +32,6 @@ public:
 
     Triangle(Orientation o, HeightDirection h, float a, float b);
     float calculate_area() const override;
-    std::string writeSVGformula();
+    std::string getTag() override;
 };
 #endif

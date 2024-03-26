@@ -12,5 +12,9 @@ public:
     int WriteToFile();
     int CreateNewFile();
     void CreateTagFromShape(Shape* shape);
+    void CreateStartTag();
+    void CreateExitTag();
 };
 #endif
+
+//<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50 100 100\">

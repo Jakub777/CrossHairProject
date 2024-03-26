@@ -11,23 +11,25 @@ int ShapeWriter::CreateNewFile() {
     std::string fileExtension = ".svg";
     std::stringstream combinedName;
     std::string newName;
+    std::string path = "Crosshairs/";
     const int MAX_CROSSHAIR_NUMBER = 1000;
     int i = 0;
+
     for (i = 0; i < MAX_CROSSHAIR_NUMBER; i++)
     {
-        combinedName << crosshairName << i << fileExtension;
+        combinedName << path << crosshairName << i << fileExtension;
         newName = combinedName.str();
-        combinedName.str(std::string());
-        
-        std::cout << newName << std::endl;;
 
         if (!std::filesystem::exists(newName))
-            break;           
+            break;               
+        combinedName.str(std::string());
     }
     if (i == MAX_CROSSHAIR_NUMBER - 1 ) {
         std::cout << "No more free names";
         return -2;
     }
+    std::cout << "New file name: " << newName << std::endl;
+
     std::ofstream new_file(newName);
     if (new_file.is_open()) 
     {
@@ -61,18 +63,16 @@ int ShapeWriter::WriteToFile()
 
 void ShapeWriter::CreateTagFromShape(Shape* shape)
 {
-    std::stringstream ss;
-    ss << "<";
-    if (Circle* circle = dynamic_cast<Circle*>(shape))
-    {
-        ss << "circle  cx=\"50\" cy=\"50\" r=\"" << circle->radius << "\"";
-    }
-    else if (Triangle* triangle = dynamic_cast<Triangle*>(shape))
-    {
-        ss << "polygon points=\""  << triangle->VertexA.printCoordinates() << " "
-                                    << triangle->VertexB.printCoordinates() << " "
-                                    << triangle->VertexC.printCoordinates() << "\"";
-    }
-    ss << " fill=\"red\" />\n";
-    text = ss.str();
+    text.append(shape->getTag()+"\n");
+}
+
+void ShapeWriter::CreateStartTag()
+{
+    std::string startingLine = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50 100 100\">\n";
+    text.append (startingLine);
+}
+void ShapeWriter::CreateExitTag()
+{
+    std::string endingLine = "</svg>";
+    text.append(endingLine);
 }

@@ -22,13 +22,17 @@ int main()
         MyMerger.calculateFirstVertex(triangle, MyCircle);
         MyMerger.calculateSecondVertex(triangle, MyCircle);
         MyMerger.calculateThirdVertex(triangle, MyCircle);
-        // std::cout << "<polygon points=\"";
-        // std::cout << triangle.VertexA.printCoordinates() << " ";
-        // std::cout << triangle.VertexC.printCoordinates() << " ";
-        // std::cout << triangle.VertexB.printCoordinates()<< "\" fill=\""<<MyColors.at(i++)<<"\" />\n";
-        MyWriter.CreateTagFromShape(&triangle);        
+        std::cout << "new point " << triangle.VertexA.getPoint() << std::endl;  
+    }
+    for (auto triangle : MyTriangles)
+    {
+        std::cout << "one more time " << triangle.VertexA.getPoint() << std::endl;  
     }
     MyWriter.CreateNewFile();
+    MyWriter.CreateStartTag();
+    MyWriter.CreateTagFromShape(&MyTriangles.at(1));
+    MyWriter.CreateExitTag();
     MyWriter.WriteToFile();
+    std::cin.get();
     return 0;
 }

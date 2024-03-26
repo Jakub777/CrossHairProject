@@ -7,7 +7,7 @@ Point::Point(int a, int b)
     y = b;
 }
 
-std::string Point::printCoordinates()
+std::string Point::getPoint()
 {
     std::ostringstream s1,s2;
     s1 << x;
