@@ -2,6 +2,7 @@
 #include "CTriangle.hpp"
 #include "CCircle.hpp"
 #include "CShapeMerger.hpp"
+#include "CShapeWriter.hpp"
 #include <vector>
 int main()
 {
@@ -12,6 +13,7 @@ int main()
     MyTriangles.push_back(Triangle(VERTICAL,   RIGHT,  20,  40));
     Circle MyCircle(45);
     ShapeMerger MyMerger;
+    ShapeWriter MyWriter;
 
     std::vector<std::string> MyColors = {"red", "blue", "green", "black"};
     int i = 0;
@@ -20,10 +22,13 @@ int main()
         MyMerger.calculateFirstVertex(triangle, MyCircle);
         MyMerger.calculateSecondVertex(triangle, MyCircle);
         MyMerger.calculateThirdVertex(triangle, MyCircle);
-        std::cout << "<polygon points=\"";
-        std::cout << triangle.VertexA.printCoordinates() << " ";
-        std::cout << triangle.VertexC.printCoordinates() << " ";
-        std::cout << triangle.VertexB.printCoordinates()<< "\" fill=\""<<MyColors.at(i++)<<"\" />\n";
+        // std::cout << "<polygon points=\"";
+        // std::cout << triangle.VertexA.printCoordinates() << " ";
+        // std::cout << triangle.VertexC.printCoordinates() << " ";
+        // std::cout << triangle.VertexB.printCoordinates()<< "\" fill=\""<<MyColors.at(i++)<<"\" />\n";
+        MyWriter.CreateTagFromShape(&triangle);        
     }
+    MyWriter.CreateNewFile();
+    MyWriter.WriteToFile();
     return 0;
 }

@@ -1,4 +1,6 @@
 #include "CShapeWriter.hpp"
+#include "CCircle.hpp"
+#include "CTriangle.hpp"
 #include <iostream>
 #include <fstream>
 #include <filesystem>
@@ -29,7 +31,7 @@ int ShapeWriter::CreateNewFile() {
     std::ofstream new_file(newName);
     if (new_file.is_open()) 
     {
-        newestFileName = new_file;
+        newestFileName = newName;
         std::cout << "File was created.\n";
         new_file.close();
     }
@@ -43,12 +45,34 @@ int ShapeWriter::CreateNewFile() {
 
 int ShapeWriter::WriteToFile()
 {
-    if (newestFileName.is_open(newestFileName)) {
-        newestFileName << text;
-        newestFileName.close(); // Zamykanie pliku
-    } else {
+    std::ofstream current_file(newestFileName);
+    if (current_file.is_open()) 
+    {
+        current_file << text;
+        current_file.close(); // Zamykanie pliku
+    } 
+    else 
+    {
         std::cout << "Blad podczas zapisywania do pliku.\n";
         return -1;
     }
     return 0;
+}
+
+void ShapeWriter::CreateTagFromShape(Shape* shape)
+{
+    std::stringstream ss;
+    ss << "<";
+    if (Circle* circle = dynamic_cast<Circle*>(shape))
+    {
+        ss << "circle  cx=\"50\" cy=\"50\" r=\"" << circle->radius << "\"";
+    }
+    else if (Triangle* triangle = dynamic_cast<Triangle*>(shape))
+    {
+        ss << "polygon points=\""  << triangle->VertexA.printCoordinates() << " "
+                                    << triangle->VertexB.printCoordinates() << " "
+                                    << triangle->VertexC.printCoordinates() << "\"";
+    }
+    ss << " fill=\"red\" />\n";
+    text = ss.str();
 }
