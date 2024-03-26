@@ -9,13 +9,13 @@ Triangle::Triangle(Orientation o, HeightDirection h, float a, float b) :
     orientation(o),
     height_direction(h),
     base(a),
-    height(b) {
-    }
+    height(b) {}
 
 float Triangle::calculate_area() const {
     return 0,5 * base * height;
 }
 
 std::string Triangle::writeSVGformula() {
+    //<polygon points="0,100 50,25 50,75 100,0" />
     return "dupa" ;
 }
