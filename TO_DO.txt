@@ -1,14 +1,16 @@
 +-+-+-+-+ +-+-+-+-+ Done +-+-+-+-+ +-+-+-+-+ 
 
 Add file manager
+Add full support of Circle and Triangle in svg.
 
 +-+-+-+-+ +-+-+-+-+ To do +-+-+-+-+ +-+-+-+-+ 
 
-Add full support of Circle and Triangle in svg.
 Add some error handling with files.
 Experiment with SFML
 Rework Vertexex Methods - use polymorphism?
-Rethink how ShapeMerger can work better.
-BOOST_FOREACH - possible improvement in code.
+Rethink how ShapeMerger can work better - more generic functionalities.
+BOOST_FOREACH - possible improvement in code - iteration of polymorphistic objects.
+ShapeMerger jako friend podklas ksztaltow?
+Dopracowac ustawienia prywatnosci oraz consty.
 
 C:\Users\jakub\Zabawy_z_VSC

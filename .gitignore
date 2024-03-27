@@ -32,4 +32,4 @@
 *.app
 
 # Generated files
-*.svn
+Crosshairs\*.svg
