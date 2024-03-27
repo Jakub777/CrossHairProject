@@ -2,15 +2,16 @@
 
 Add file manager
 Add full support of Circle and Triangle in svg.
+Rework Vertexex Methods - use polymorphism?
 
 +-+-+-+-+ +-+-+-+-+ To do +-+-+-+-+ +-+-+-+-+ 
 
-Add some error handling with files.
 Experiment with SFML
-Rework Vertexex Methods - use polymorphism?
+Add some error handling with files.
 Rethink how ShapeMerger can work better - more generic functionalities.
 BOOST_FOREACH - possible improvement in code - iteration of polymorphistic objects.
 ShapeMerger jako friend podklas ksztaltow?
-Dopracowac ustawienia prywatnosci oraz consty.
+Consider better usage of privacy and const keyword.
+Consider using decorators in generating tags - are they usefull? - more options like outlines etc.?
 
 C:\Users\jakub\Zabawy_z_VSC

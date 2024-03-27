@@ -4,6 +4,8 @@
 #include "CShapeMerger.hpp"
 #include "CShapeWriter.hpp"
 #include <vector>
+#include <SFML/Graphics.hpp>
+
 int main()
 {
     Circle MyCircle(45);
@@ -27,10 +29,31 @@ int main()
 
     MyWriter.CreateNewFile();
     MyWriter.CreateStartTag();
-    for (auto& triangle : MyTriangles)
-        MyWriter.CreateTagFromShape(triangle);
+    for (auto triangle : MyTriangles)
+        MyWriter.CreateTagFromShape(&triangle);
     MyWriter.CreateExitTag();
     MyWriter.WriteToFile();
+
+
+
+    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::CircleShape shape(100.f);
+    shape.setFillColor(sf::Color::Green);
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear();
+        window.draw(shape);
+        window.display();
+    }
+
     std::cin.get();
     return 0;
 }

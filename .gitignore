@@ -33,3 +33,7 @@
 
 # Generated files
 *.svg
+
+# VS Debug files
+*.pdb
+*.ilk
